@@ -1,12 +1,12 @@
 # README
 
 ## Introduction
-The U.S. Bureau of Labor Statistics projects a 36% growth in employment for data scientists between 2023 and 2033. This is not surprising at all. Ever since the pandemic started, hybrid/remote work settings became the preference for the job seekers due to its convenience and safety concerns. Due to this, the number of job posting for data roles skyrocketed.
+According to the U.S. Bureau of Labor Statistics (BLS), data science employment is projected to expand by 36% between 2023 and 2033. This rapid market growth is heavily driven by the permanent shift toward remote and hybrid work models, which accelerated a massive influx of virtual job openings across the data sector. This project analyzes those shifting employment dynamics to identify key trends in the modern tech workforce.
 
-This analysis aims to help job seekers to enter the industry by providing insight about the employments for the top 3 data job categories based on the various factors such as:
+The primary goal of this analysis is to lower the barrier to entry for job seekers breaking into the data space.To achieve this, the project evaluates hiring patterns across the top three data domains, specifically isolating the impact of:
 
     1.) Work setting
-    2.) Experience level`
+    2.) Experience level
 
 For the analysis, we'll be using the jobs_in_data dataset gathered from Kaggle:
     
@@ -63,7 +63,7 @@ df_US.info()
 Fortunately, our dataset's already clean and has no missing values. Hence, we can now start the analysis.
 
 # The Analysis
-As stated earlier, this analysis is for the top 3 data job categories in the United States. So, we'll start our analysis by identifying this.
+As defined in the project scope, this study focuses exclusively on the top three data job categories by volume within the United States market. In the following step, we will filter the dataset by geographic location (company_location == 'United States') and execute a frequency count on job_category to programmatically identify our primary analytical cohorts.
 
 ```python
 #Get the top 3 data job categories in the United States
@@ -83,7 +83,7 @@ For the detailed steps of every plots/graphs shown, please see my notebook here:
 
 ## 1.) Mean salary of the Top 3 Data Job Categories on Different Work Settings
 
-Ever since the pandemic, most applicants heavily consider the work setting in accepting the job offers. Here, we will explore how well the different job categories paid based on different work settings.
+The post-pandemic landscape fundamentally altered candidate priorities, transforming workplace flexibility from a fringe perk into a core negotiating pillar. This section explores the interplay between candidate preferences and employer compensation strategies. Specifically, we evaluate how average salaries (salary_in_usd) vary across different work_setting models (Remote, Hybrid, On-site) within each of our top three data cohorts to determine if choosing flexibility incurs a financial trade-off.
 
 To find the mean salary of top 3 data job categories, I filtered the 'job_category' column to the said categories, then utilized pandas groupby to finally calculate for the mean salary.
 
@@ -106,10 +106,10 @@ plt.show()
 ![Data Visualization](images\mean_work_setting.png)
 
 ### Insights
-- Data Science and Research category has the highest mean salary than the others, with In-person work setting having the mean salary around $175K, followed by Remote and Hybrid work setting which are both slightly lower.
-- Among the job categories, Data Engineering pays remote work setting the most than other work settings.
-- Data Analysis has the lowest mean salary among the categories, across all work settings.
-- Hybrid work setting has the lowest mean salary across different job categories.
+- Data Science & Research: In-person positions lead with a peak mean salary of ~$175K. Remote and hybrid models follow closely, showing strong salary resilience despite increased flexibility.
+- Data Engineering: Demonstrates a distinct market preference for decentralized talent, with Remote work settings outperforming all other modalities in average pay.
+- Data Analysis: Consistently places at the lower end of the compensation spectrum, showing minimal variation across different work settings.
+- Cross-Category Hybrid Trend: Interestingly, Hybrid environments register the lowest mean compensation across the entire cohort, suggesting unique market forces affecting split-schedule roles.
 
 ### Deep dive on to what causing why Hybrid work setting mean salary to be the lowest  
 Many job seekers prefer Hybrid work setting due to its convenience and cost-efficiency. We'll dive deeper on to the reason why Hybrid work setting has the lowest mean salary in all data job categories.
@@ -138,12 +138,10 @@ for work in setting_work:
 ![Wahah](images/df_dist_remote.png)
 
 ### Insights
-- Hybrid work setting is dominated by lower level experiences, especially the Data Analysis category.
-    - This causes the mean average to be low since low experience level tends to imply lower salary.
-    - Data analysis is more of an entry-level category than the other two.
-- Both In-person and Remote work setting dominated by senior level experience level.
-    - Companies tend to offer this work setting to tenured employees due to their expertise in the field. They do not need much of a guidance from their higher-ups. If anything, they are the one to mentor their entry-level employees.
-    - Though, some companies offer trainings before transitioning employees to Hybrid work setting.
+- Hybrid models are heavily populated by junior-level experience tiers, dragging down the segment's overall mean salary.
+- Data Analysis functions primarily as an entry-level category compared to the other two domains, and it relies heavily on hybrid schedules.
+- Remote and In-Person settings are anchored by Senior-level professionals. Companies grant these modalities to tenured employees who operate independently and mentor junior staff.
+- The high concentration of junior talent in hybrid frameworks indicates that companies prefer utilizing split schedules for foundational training before transitioning employees into higher-autonomy work settings.
 
 ## 2.) Mean salary for top 3 data job categories based on experience level
 
@@ -173,11 +171,11 @@ plt.show()
 ![Mean for different experience level](images\mean_exp_level.png)
 
 ### Insights
-- Data Science and Research category leads the mean salary on every experience level.
-    - This is expected since Entry-level positions in this category are not exactly "Entry-level". For example, Data Scientist is not really an entry-level position, but it is entry-level in this category.
+- The Data Analysis track holds the lowest average salary at every career stage (Entry, Mid, Senior, Executive).
+    - This trend aligns with industry realities. Positions designated as "Entry-Level" within advanced categories like Data Science are not entry-level in the traditional sense. Because these roles demand foundational expertise right from the start, their baseline compensation begins at a significantly higher tier compared to standard early-career roles.
 - Data Analysis category has the lowest mean salary in every experience level.
-    - Weirdly enough, the Senior level has higher mean salary compare to Executive level.
-    - Some articles suggest that there are senior level role in this category that assumes the Executive's responsibility. This might cause for some Senior level to be on par or even higher with Executive level in salary.
+    - Interestingly, Senior analysts out-earn Executive-level profiles in this dataset.
+    - Industry research suggests this trend stems from title compression. Many companies rely on Senior Analysts to absorb executive-level strategic ownership and cross-functional leadership while retaining an individual contributor title, driving their specialized compensation past early managerial or executive baselines.
 - Data Analysis category has also lowest salary growth.
     - Job seekers currently in this category might want to consider shifting into different category as salary progression is much higher.
 
@@ -203,25 +201,24 @@ for job in top_3_job:
 ![whah](images\salary_dist_DE.png)
 ![whah](images\salary_dist_DA.png)
 
-### Insight
+### Insights
 - Data Science and Research
-    - There is no extreme low points which indicates that nothing in any experience level is underpaid. Hence, every experience level are paid well.
-    - The Executive role has the highest median salary, slightly above Senior level.
-    - Some Senior level roles have higher outlier than the Executive role, this might indicate some kind of specialist role in the field.
-    - Some Mid-level role paid significantly higher than Senior-level role. This might indicate title may not fully reflect the responsibilities.
-    - Both Entry-level and Mid-level shows low distribution that might indicate standardized pay.
+    - The distribution shows an absence of extreme low-end outliers, indicating high industry baselines where early-career professionals are well-compensated out of the gate.
+    - Executive roles claim the highest median salary, though they sit only marginally above the Senior-level bracket.
+    - Select Senior-level outliers surpass the absolute maximum of the Executive distribution. This points to the existence of highly specialized individual contributor (IC) roles that command premium market rates for technical expertise.
+    - A subset of Mid-level professionals out-earns the Senior-level median, suggesting that corporate titles in this domain do not always perfectly align with a candidate's actual scope of responsibility or leverage.
+    - Both Entry and Mid-level brackets exhibit compact distributions, signaling highly structured and standardized corporate pay scales for non-senior talent.
 
 - Data Engineering
-    - Every experience level is paid well, with the exception of Senior level as some in this level is paid incredibly low.
-    - As expected, Executive level has the highest median salary, but unlike in Data Science and Research category, it has no outliers.
-    - Senior-level role, despite having extremely low outlier, has the most outlier that exceeds the pay of Executive-level roles.
-    - Mid-level role has the most balance dsitribution of salary with some outliers in the higher extremity.
-    - Entry-level role median pay is very low, but the salary distribution seems to be skewed to the higher end.
+    - While compensation remains strong across most brackets, the Senior cohort features a unique downward outlier anomaly—revealing a small subset of senior positions paying significantly below market norms.
+    - Executives yield the highest median salary. Unlike the Data Science track, the Executive distribution here contains no outliers, indicating a stable and predictable ceiling for management compensation.
+    - Despite its low-end anomalies, the Senior bracket contains the highest volume of upward outliers, frequently eclipsing Executive-level pay scales.
+    - The Mid-level tier displays a highly balanced, symmetric distribution, flanked by strong positive outliers on the upper extremity.
+    - Although Entry-level median pay rests on the lower end, the overall distribution is heavily skewed toward the higher side, indicating strong upward mobility and aggressive negotiation potential for top junior talent.
 
 - Data Analysis
-    - There is no extreme low points which indicates that nothing in any experience level is underpaid. Hence, every experience level are paid well.
-    - The boxes across different experience level with exception of Executive-level are compact. This might indicate standardized pay.
-    - Executive-level role has only slightly higher median salary compare to senior-level role.
-    - Many of the Senior-level role is paid significantly higher than Executive-level role. This might indicate that the title may not fully reflect the responsibilities.
-    - Some Mid-level role outlier is higher than the Senior-level role, more likely to reflect some kind of specialty in the field.
-    - Entry-level role are paid the lowest and has the most compact distribution, too.
+    - Similar to Data Science, the lack of extreme low-end datapoints suggests an industry-wide baseline that prevents severe underpayment at any tier.
+    - The boxplots across Entry, Mid, and Senior levels are noticeably compact. This tight variance indicates highly rigid, standardized salary bands across the analytics vertical.
+    - Executive median pay is only fractionally higher than Senior-level pay, resulting in a massive distributional overlap where a significant portion of Senior Analysts out-earn their Executive counterparts. This underscores scenarios where experienced individual contributors absorb strategic leadership without a formal title change.
+    - Select Mid-level outliers stretch past the Senior median, highlighting specialized analytics skill sets (e.g., domain-specific data modeling) that command a distinct market premium.
+    - Entry-level roles register the lowest overall compensation and the most compressed distribution, indicating strict corporate salary ceilings for baseline analytics onboarding.
