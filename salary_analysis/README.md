@@ -1,6 +1,6 @@
-# README (main)
+# README
 
-## Introduction
+## Intro
 According to the U.S. Bureau of Labor Statistics (BLS), data science employment is projected to expand by 36% between 2023 and 2033. This rapid market growth is heavily driven by the permanent shift toward remote and hybrid work models, which accelerated a massive influx of virtual job openings across the data sector. This project analyzes those shifting employment dynamics to identify key trends in the modern tech workforce.
 
 The primary goal of this analysis is to lower the barrier to entry for job seekers breaking into the data space.To achieve this, the project evaluates hiring patterns across the top three data domains, specifically isolating the impact of:
